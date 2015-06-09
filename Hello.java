@@ -26,7 +26,10 @@ public class Hello extends Application {
 		entry.setPromptText("Enter your name");
 
 		Button hello = new Button("Greeting");
-		hello.setOnAction(e -> greet(entry));
+		hello.setOnAction(e -> {
+			greet(entry);
+			stage.setTitle("Welcome to Java");
+		});
 		hello.setDefaultButton(true);
 		hello.setTooltip(new Tooltip("Click me!"));
 
@@ -37,14 +40,14 @@ public class Hello extends Application {
 		scene = new Scene(layout);
 
 		stage.setScene(scene);
-		stage.setTitle("Welcome to Java");
+		stage.setTitle("Good morning");
 		stage.show();
 		hello.requestFocus();
 	}
 
 	public void greet(TextField entry) {
 		String name = entry.getText();
-		Label label = name.isEmpty() ? new Label("Hey camper!") : new Label("How's it going, " + name + "?");
-		scene.setRoot(label);
+		String greeting = name.isEmpty() ? "Hey camper!" : "How's it going, " + name + "?";
+		scene.setRoot(new Label(greeting));
 	}
 }
